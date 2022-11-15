@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function someFunc(first, second, third, ...anyArg) {
+
+            if(typeof first === 'undefined') {
+                arguments[0] = "Error";
+                first = "Error";
+            }
+
+            if(arguments.length < 5) {
+                console.log("Error");
+            }
+
+            let f3elem = []
+            for(let i = 0; i < 3; i++) {
+                f3elem.push(arguments[i]);
+            } // [undefined, 2, 3]
+            console.log(f3elem.join("-")); 
+
+            let newObj = {};
+            let j = 0;
+            for(let i = 3; i < arguments.length; i++) {
+                newObj[j] = arguments[i]; //
+                j++;
+            }
+
+            console.log(newObj);
+        }
+
+        someFunc(undefined, 2, 3, 4, 5, 'sd'); // [undefined, 2, 3, 4, 5, 'sd']
+
+    </script>
+</body>
+</html>
